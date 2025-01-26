@@ -2,7 +2,7 @@
 
 1. Clone the repository into a new directory using the following command:
    ```
-   git clone --branch dev    git clone --branch dev https://github.com/zainulabdin-burfat/coaching-platform.git
+   git clone --branch main https://github.com/zainulabdin-burfat/coaching-platform.git
    ```
 2. Navigate to the project's root directory:
     ```
