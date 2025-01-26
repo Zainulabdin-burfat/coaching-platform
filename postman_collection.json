@@ -1,0 +1,134 @@
+{
+    "info": {
+        "_postman_id": "12345678-1234-5678-9012-abcdefabcdef",
+        "name": "Coaching Platform API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register Coach",
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Coach John\",\n    \"email\": \"coach@example.com\",\n    \"password\": \"password123\",\n    \"specialization\": \"Fitness\",\n    \"bio\": \"Certified fitness expert\"\n}"
+                        },
+                        "url": { "raw": "{{base_url}}/api/register/coach", "host": ["{{base_url}}"], "path": ["api", "register", "coach"] }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"coach@example.com\",\n    \"password\": \"password123\"\n}"
+                        },
+                        "url": { "raw": "{{base_url}}/api/login", "host": ["{{base_url}}"], "path": ["api", "login"] }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+                        "url": { "raw": "{{base_url}}/api/logout", "host": ["{{base_url}}"], "path": ["api", "logout"] }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Coach Management",
+            "item": [
+                {
+                    "name": "Register Client (Coach Only)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Client One\",\n    \"email\": \"client@example.com\",\n    \"password\": \"password123\"\n}"
+                        },
+                        "url": { "raw": "{{base_url}}/api/register/client", "host": ["{{base_url}}"], "path": ["api", "register", "client"] }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Clients (Coach Only)",
+                    "request": {
+                        "method": "GET",
+                        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+                        "url": { "raw": "{{base_url}}/api/coach/clients", "host": ["{{base_url}}"], "path": ["api", "coach", "clients"] }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Client Progress (Coach Only)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"progress\": 80\n}"
+                        },
+                        "url": { "raw": "{{base_url}}/api/coach/client/1", "host": ["{{base_url}}"], "path": ["api", "coach", "client", "1"] }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Client (Coach Only)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+                        "url": { "raw": "{{base_url}}/api/coach/client/1", "host": ["{{base_url}}"], "path": ["api", "coach", "client", "1"] }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Client Management",
+            "item": [
+                {
+                    "name": "Get Client Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+                        "url": { "raw": "{{base_url}}/api/client/profile", "host": ["{{base_url}}"], "path": ["api", "client", "profile"] }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark Session as Completed",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "url": { "raw": "{{base_url}}/api/client/session/1/complete", "host": ["{{base_url}}"], "path": ["api", "client", "session", "1", "complete"] }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        { "key": "base_url", "value": "http://localhost" },
+        { "key": "token", "value": "" }
+    ]
+}

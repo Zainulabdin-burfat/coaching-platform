@@ -28,6 +28,9 @@
     php artisan migrate:fresh
     php artisan elastic:migrate:fresh
     php artisan scout:import "App\Models\User"
+    php artisan scout:import "App\Models\Coach"
+    php artisan scout:import "App\Models\Client"
+    php artisan scout:import "App\Models\Session"
     php artisan db:seed
     npm install
     npm run build
